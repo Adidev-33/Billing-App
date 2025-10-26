@@ -15,8 +15,6 @@ This is a full-stack billing and invoice management application. It's a modern R
 
 ## Tech Stack
 
-This project is a "monorepo" containing two separate projects: a frontend and a backend.
-
 ### Frontend (`/frontend`)
 
 * **Framework:** React 18
