@@ -15,6 +15,8 @@ This is a full-stack billing and invoice management application. It's a modern R
 
 ## Tech Stack
 
+This project is a "monorepo" containing two separate projects: a frontend and a backend.
+
 ### Frontend (`/frontend`)
 
 * **Framework:** React 18
@@ -41,19 +43,14 @@ my-billing-app/
 │   ├── .gitignore
 │   ├── package.json
 │   └── server.js       # (The Express API)
-└── frontend/
-    ├── public/
-    │   └── logo.png
-    ├── src/
-    │   ├── api/
-    │   ├── components/
-    │   ├── pages/
-    │   ├── App.jsx
-    │   ├── main.jsx
-    │   └── index.css
-    ├── .gitignore
-    ├── package.json
-    └── vite.config.js  # (Configured with proxy to backend)
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── .gitignore
+│   ├── package.json
+│   └── vite.config.js
+├── database_setup.sql  # (SQL script to set up the database)
+└── README.md
 ```
 
 ## Setup & Installation
@@ -70,11 +67,27 @@ First, let's get the server and database running.
     ```
 2.  Install the necessary packages:
     ```bash
-    npm install
+    npm install express mysql2 cors dotenv
     ```
 3.  **Database Setup:**
     * Make sure your MySQL server is running.
-    * Open your MySQL client (Workbench, etc.) and run the `database_setup.sql` file (located in the `frontend` folder) to create the `interior_design_db` and all its tables.
+    * You need to run the `database_setup.sql` file (located in the root `my-billing-app/` folder) to create the `interior_design_db` and all its tables.
+
+    **Option A: Using a GUI (like MySQL Workbench)**
+    * Open MySQL Workbench and connect to your database server.
+    * Go to `File` > `Open SQL Script...`.
+    * Navigate to the `my-billing-app/` folder and select `database_setup.sql`.
+    * Click the "lightning bolt" (⚡) icon to execute the script.
+
+    **Option B: Using the Command Line**
+    * Open your terminal.
+    * Navigate to the root `my-billing-app/` folder (the one containing the `.sql` file).
+    * Run the following command, replacing `your_username` with your MySQL username:
+        ```bash
+        mysql -u your_username -p < database_setup.sql
+        ```
+    * It will prompt you to enter your MySQL password.
+
 4.  **Create Environment File:**
     * Create a new file named `.env` in the `/backend` folder.
     * Add your MySQL credentials to this file. It must include:
@@ -101,14 +114,17 @@ Now, let's start the React application in a separate terminal.
     ```
 3.  Install the necessary packages:
     ```bash
-    my-billing-app\frontend> npm install
-    my-billing-app\frontend> npm install react-router-dom
+    npm install
     ```
-4.  **Start the Frontend App:**
+4.  Install React Router:
+    ```bash
+    npm install react-router-dom
+    ```
+5.  **Start the Frontend App:**
     ```bash
     npm run dev
     ```
-Your React app is now running at `http://localhost:5173` (or the port shown in your terminal).
+    Your React app is now running at `http://localhost:5173` (or the port shown in your terminal).
 
 ## Usage
 
