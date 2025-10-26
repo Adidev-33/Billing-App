@@ -103,14 +103,14 @@ Now, let's start the React application in a separate terminal.
     ```
 3.  Install the necessary packages:
     ```bash
-D:\Programs\Projects\my-billing-app\frontend> npm install
-    npm install
+    my-billing-app\frontend> npm install
+    my-billing-app\frontend> npm install react-router-dom
     ```
 4.  **Start the Frontend App:**
     ```bash
     npm run dev
     ```
-    Your React app is now running at `http://localhost:5173` (or the port shown in your terminal).
+Your React app is now running at `http://localhost:5173` (or the port shown in your terminal).
 
 ## Usage
 
